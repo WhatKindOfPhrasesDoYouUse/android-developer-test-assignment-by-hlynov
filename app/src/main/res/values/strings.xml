@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">KhlynovApp</string>
+    <string name="app_title">Поиск музыкальных\nисполнителей</string>
+    <string name="service_info">Сервис позволяет найти лучшие треки исполнителей и показывает\nбиографию</string>
+    <string name="artist_biography_button">Биография артиста</string>
+    <string name="best_tracks_button">Лучшие треки</string>
+    <string name="artist_image">Изображение артиста</string>
+</resources>
