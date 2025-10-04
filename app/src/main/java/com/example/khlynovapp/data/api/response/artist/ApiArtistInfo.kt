@@ -22,25 +22,4 @@ data class ApiArtistInfo(
 
     @SerializedName("stats")
     val stats: ApiStats
-) {
-    fun toDomainArtist(): Artist {
-        val mediumImage = image.find {
-            it.size == "medium"
-        }
-
-        val biography = bio?.summary
-            ?: bio?.content
-            ?: "Биография отсутствует"
-
-        val cleanBiography = biography
-            .replace(Regex("<[^>]*>"), "")
-            .replace("Read more on Last.fm", "")
-            .trim()
-
-        return Artist(
-            name=name,
-            biography=cleanBiography,
-            imageUrl = mediumImage?.text ?: ""
-        )
-    }
-}
+)
