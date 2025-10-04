@@ -11,5 +11,6 @@
     <string name="search_field_text">Кого ищем?</string>
     <string name="search_button">Искать</string>
     <string name="back_button">Вернуться назад</string>
-    
+    <string name="ic_magnifying_glass_image">Изображение лупы</string>
+
 </resources>

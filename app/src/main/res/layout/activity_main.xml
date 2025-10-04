@@ -25,6 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Линия под заголовком. -->
     <View
         android:id="@+id/underlineView"
         android:layout_width="0dp"
@@ -37,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="@+id/titleTextView"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-
+    <!-- Общная информация о приложении. -->
     <TextView
         android:id="@+id/serviceInfoTextView"
         android:layout_width="0dp"
@@ -53,6 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Изображение. -->
     <ImageView
         android:id="@+id/sampleImage"
         android:layout_width="match_parent"
@@ -67,6 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <!-- Кнопка перехода на поиск биографии артиста. -->
     <Button
         android:id="@+id/biographyButton"
         android:layout_width="288dp"
@@ -83,6 +86,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Кнопка просмотра лучших треков артиста. -->
     <Button
         android:id="@+id/tracksButton"
         android:layout_width="288dp"

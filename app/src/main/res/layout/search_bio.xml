@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_biography"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchBiographyActivity">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="36dp"
+        android:gravity="start"
+        android:text="@string/biography_title"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="12dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_magnifying_glass"
+        android:contentDescription="@string/ic_magnifying_glass_image"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:textSize="15sp"
+        android:hint="@string/search_field_text"
+        android:textColorHint="#000000"
+        android:background="@null"
+        android:autofillHints=""
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <View
+        android:id="@+id/underlineView"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/line_gradient"
+        app:backgroundTint="@null"
+        app:layout_constraintStart_toStartOf="@+id/searchIcon"
+        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/biographyButton"
+        android:layout_width="288dp"
+        android:layout_height="55dp"
+        android:text="@string/search_button"
+        android:textSize="16sp"
+        android:textColor="#303030"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/first_button_gradient"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@+id/underlineView"
+        app:layout_constraintStart_toStartOf="@+id/underlineView"
+        app:layout_constraintEnd_toEndOf="@+id/underlineView" />
+
+    <TextView
+        android:id="@+id/backTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/back_button"
+        android:textColor="#000000"
+        android:autofillHints=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/artistImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/artist_image"
+        app:layout_constraintTop_toBottomOf="@+id/biographyButton"
+        app:layout_constraintStart_toStartOf="@+id/biographyButton"
+        app:layout_constraintEnd_toEndOf="@+id/biographyButton" />
+
+    <TextView
+        android:id="@+id/artistName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/artistImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/artistBio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:textColor="#7B7B7B"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/artistName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/backTextView"/>
+
+    <View
+        android:id="@+id/underlineView2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_marginTop="1dp"
+        app:layout_constraintTop_toBottomOf="@id/backTextView"
+        app:layout_constraintStart_toStartOf="@id/backTextView"
+        app:layout_constraintEnd_toEndOf="@id/backTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
