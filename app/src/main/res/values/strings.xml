@@ -13,4 +13,6 @@
     <string name="back_button">Вернуться назад</string>
     <string name="ic_magnifying_glass_image">Изображение лупы</string>
 
+    <string name="top_track_title">Лучшие треки</string>
+
 </resources>

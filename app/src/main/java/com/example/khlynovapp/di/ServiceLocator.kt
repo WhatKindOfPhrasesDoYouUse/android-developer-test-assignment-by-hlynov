@@ -8,7 +8,6 @@ object ServiceLocator {
     val apiService: LastFmApiService by lazy {
         ApiClient.createLastFmApiService()
     }
-
     val musicRepository: MusicRepository by lazy {
         MusicRepository(apiService)
     }

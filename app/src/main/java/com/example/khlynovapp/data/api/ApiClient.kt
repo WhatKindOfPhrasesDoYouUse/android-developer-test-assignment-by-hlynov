@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
     private const val TIMEOUT = 30L
-
     fun createLastFmApiService() : LastFmApiService {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
