@@ -1,6 +1,6 @@
 # Android Test App - Банк Хлынов
 
-##### Описание проекта
+### Описание проекта
 
 Тестовое задание на позицию **Android-разработчика** в АО КБ "Хлынов".
 
@@ -12,20 +12,22 @@
 - Навигация между экранами
 - Верстка по предоставленному макету из Figma
 
-##### Макет
+### Макет
 
 Макет реализован на основе предоставленного шаблона Figma с одним улучшением. Добавлен скроллинг текста биографии, в следствии длинных текстов приходящих от API.
 
-##### API
+### API
 
 Для выполнения проекта был использован открытый API: **Last.fm API**, из которого были выбраны два эндпоинта:
 
-http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=YOUR_INPUT_ARTIST&api_key=YOUR_API_KEY&format=YOUR_CHOICE_FORMAT - Для поиска информации об артисте.
+Для поиска информации об артисте:
+- http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=YOUR_INPUT_ARTIST&api_key=YOUR_API_KEY&format=YOUR_CHOICE_FORMAT
 
-http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=YOUR_INPUT_ARTIST&api_key=YOUR_API_KEY&format=YOUR_CHOICE_FORMAT - Для получения страниц треков.
+Для получения страниц треков:
+- http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=YOUR_INPUT_ARTIST&api_key=YOUR_API_KEY&format=YOUR_CHOICE_FORMAT
 
 
-##### Технологии и стек
+### Технологии и стек
 
 Используемые технологии в ходе разработки проекта:
 
@@ -39,19 +41,17 @@ http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=YOUR_INPUT_A
 | **Целевая SDK**            | 36 _(Android 15)_ |
 | **Сборка проекта**         | Gradle            |
 
-##### Как запустить проект:
+### Как запустить проект:
 
 1. Клонировать репозиторий:
 `git clone https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov.git`
 2. Открыть проект в Android Studio.
-3. Получить API ключ на: https://www.last.fm/home
+3. Получить API ключ на: https://www.last.fm/api
 4. Создать файл `local.properties` в корне проекта и скопировать в него полученный API ключ.
 5. Собрать и запустить приложение.
 
-##### Скриншоты работающего приложения:
+### Скриншоты работающего приложения:
 
-- Главный экран приложения: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/main_window.png
-
-- Экран поиска биографии артиста: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/bio.png
-
-- Экран поиска треков артиста: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/top_tracks.png
+| Главный экран | Биография артиста | Треки артиста |
+|---------------|------------------|------------|
+| [main_window.png](https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/main_window.png) | [bio.png](https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/bio.png) | [top_tracks.png](https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/top_tracks.png) |
