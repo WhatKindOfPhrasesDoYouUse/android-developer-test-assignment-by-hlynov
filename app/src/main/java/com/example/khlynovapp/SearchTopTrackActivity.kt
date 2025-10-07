@@ -6,18 +6,15 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.example.khlynovapp.data.api.response.ApiResult
+import com.example.khlynovapp.data.api.response.error.ApiError
 import com.example.khlynovapp.data.domain.Track
 import com.example.khlynovapp.di.ServiceLocator
+import com.example.khlynovapp.util.AppConstants.ARTIST_NAME_INPUT
 import kotlinx.coroutines.launch
 
 class SearchTopTrackActivity : AppCompatActivity() {
     private val repository = ServiceLocator.musicRepository
-
-    companion object {
-        private const val ARTIST_NAME_INPUT = "Введите имя артиста"
-        private const val TRACKS_NOT_FOUND = "Треки не найдены"
-        private const val TRACKS_LOAD_ERROR = "Ошибка при загрузке треков"
-    }
 
     private lateinit var editText: EditText
     private lateinit var searchButton: Button
@@ -34,7 +31,7 @@ class SearchTopTrackActivity : AppCompatActivity() {
 
     private fun initViews() {
         editText = findViewById(R.id.editText)
-        searchButton = findViewById(R.id.biographyButton)
+        searchButton = findViewById(R.id.topTrackButton)
         tracksContainer = findViewById(R.id.tracksContainer)
         backText = findViewById(R.id.backTextView)
     }
@@ -77,12 +74,26 @@ class SearchTopTrackActivity : AppCompatActivity() {
         clearPreviousResults()
 
         lifecycleScope.launch {
-            try {
-                val tracks = repository.getRandomTopTracks(artistName)
-                handleTracksResult(tracks)
-            } catch (e: Exception) {
-                handleTracksError(e)
+            when (val result = repository.getRandomTopTracks(artistName)) {
+                is ApiResult.Success -> {
+                    handleTracksResult(result.data)
+                }
+                is ApiResult.Error -> {
+                    showMessage(result.apiError.userMessage)
+                    showSpecialToast(result.apiError)
+                }
             }
+        }
+    }
+
+    private fun showSpecialToast(error: ApiError) {
+        when (error) {
+            ApiError.RATE_LIMIT_EXCEEDED,
+            ApiError.SERVICE_OFFLINE,
+            ApiError.NETWORK_ERROR,
+            ApiError.INVALID_PARAMETERS ->
+                Toast.makeText(this, error.userMessage, Toast.LENGTH_LONG).show()
+            else -> {}
         }
     }
 
@@ -98,17 +109,8 @@ class SearchTopTrackActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleTracksError(exception: Exception) {
-        exception.printStackTrace()
-        showErrorState()
-    }
-
     private fun showEmptyState() {
-        showMessage(TRACKS_NOT_FOUND)
-    }
-
-    private fun showErrorState() {
-        showMessage(TRACKS_LOAD_ERROR)
+        showMessage(ApiError.INVALID_PARAMETERS.userMessage)
     }
 
     private fun displayTracks(tracks: List<Track>) {

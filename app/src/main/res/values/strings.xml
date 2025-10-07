@@ -14,5 +14,8 @@
     <string name="ic_magnifying_glass_image">Изображение лупы</string>
 
     <string name="top_track_title">Лучшие треки</string>
+    <string name="input_artist_name">Введите артиста</string>
+
+    <string name="track_field_base_text">Поле не найдено</string>
 
 </resources>

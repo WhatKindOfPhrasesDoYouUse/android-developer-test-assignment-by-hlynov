@@ -1,24 +1,24 @@
 package com.example.khlynovapp
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.example.khlynovapp.data.api.response.ApiResult
+import com.example.khlynovapp.data.api.response.error.ApiError
 import com.example.khlynovapp.data.domain.Artist
 import com.example.khlynovapp.di.ServiceLocator
+import com.example.khlynovapp.util.AppConstants.ARTIST_NAME_INPUT
 import kotlinx.coroutines.launch
 
 class SearchBiographyActivity : AppCompatActivity() {
     private val repository = ServiceLocator.musicRepository
-
-    companion object {
-        private const val ARTIST_NOT_FOUND_MESSAGE = "Артист не найден"
-        private const val EMPTY_ARTIST_BIO_MESSAGE = "Информация о данном артисте отсутствует"
-    }
 
     private lateinit var editText: EditText
     private lateinit var artistImage: ImageView
@@ -41,6 +41,7 @@ class SearchBiographyActivity : AppCompatActivity() {
         setContentView(R.layout.search_bio)
 
         initViews()
+        setupScrollableBio()
         setupClickListeners()
     }
 
@@ -53,21 +54,30 @@ class SearchBiographyActivity : AppCompatActivity() {
             val artistName = editText.text.toString().trim()
             if (artistName.isNotEmpty()) {
                 searchArtist(artistName)
+            } else {
+                showInputError()
             }
         }
     }
 
+    private fun setupScrollableBio() {
+        artistBioView.movementMethod = ScrollingMovementMethod()
+    }
+
     private fun searchArtist(artistName: String) {
         lifecycleScope.launch {
-            try {
-                val artist = repository.searchArtist(artistName)
-                if (artist != null) {
-                    displayArtistInfo(artist)
-                } else {
-                    showArtistNotFound()
+            when (val result = repository.searchArtist(artistName)) {
+                is ApiResult.Success -> {
+                    if (result.data.biography.isEmpty() && result.data.imageUrl.isEmpty()) {
+                        showArtistNotFound()
+                    } else {
+                        displayArtistInfo(result.data)
+                    }
                 }
-            } catch (e: Exception) {
-                showError()
+                is ApiResult.Error -> {
+                    showError(result.apiError.userMessage)
+                    showSpecialToast(result.apiError)
+                }
             }
         }
     }
@@ -75,7 +85,6 @@ class SearchBiographyActivity : AppCompatActivity() {
     private fun displayArtistInfo(artist: Artist) {
         artistNameView.text = artist.name
         artistBioView.text = artist.biography
-
         loadArtistImage(artist.imageUrl)
     }
 
@@ -88,15 +97,29 @@ class SearchBiographyActivity : AppCompatActivity() {
     }
 
     private fun showArtistNotFound() {
-        artistNameView.text = ARTIST_NOT_FOUND_MESSAGE
-        artistBioView.text = EMPTY_ARTIST_BIO_MESSAGE
+        artistBioView.text = ApiError.INVALID_PARAMETERS.userMessage
         clearArtistImage()
     }
 
-    private fun showError() {
-        artistNameView.text = "Ошибка загрузки"
-        artistBioView.text = "Попробуйте позже"
+    private fun showError(message: String) {
+        artistNameView.text = "Ошибка"
+        artistBioView.text = message
         clearArtistImage()
+    }
+
+    private fun showSpecialToast(error: ApiError) {
+        when (error) {
+            ApiError.RATE_LIMIT_EXCEEDED,
+            ApiError.SERVICE_OFFLINE,
+            ApiError.NETWORK_ERROR,
+            ApiError.INVALID_PARAMETERS ->
+                Toast.makeText(this, error.userMessage, Toast.LENGTH_LONG).show()
+            else -> {}
+        }
+    }
+
+    private fun showInputError() {
+        Toast.makeText(this, ARTIST_NAME_INPUT, Toast.LENGTH_SHORT).show()
     }
 
     private fun clearArtistImage() {
