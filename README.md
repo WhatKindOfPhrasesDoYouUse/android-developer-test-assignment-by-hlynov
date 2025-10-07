@@ -50,8 +50,8 @@ http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=YOUR_INPUT_A
 
 ##### Скриншоты работающего приложения:
 
-Главный экран приложения: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/main_window.png
-Экран поиска биографии артиста: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/bio.png
-Экран поиска треков артиста: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/top_tracks.png
+- Главный экран приложения: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/main_window.png
 
+- Экран поиска биографии артиста: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/bio.png
 
+- Экран поиска треков артиста: https://github.com/WhatKindOfPhrasesDoYouUse/android-developer-test-assignment-by-khlynov/blob/dev/screenshots/top_tracks.png
